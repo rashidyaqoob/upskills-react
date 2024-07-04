@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const AddTransaction = () => {
+  const { addTransaction } = useContext(GlobalContext);
   const {
     register,
     handleSubmit,
@@ -9,7 +11,8 @@ const AddTransaction = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const { title, amount } = data;
+    addTransaction({ title, amount: parseFloat(amount) });
   };
 
   return (
