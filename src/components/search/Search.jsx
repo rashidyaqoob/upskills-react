@@ -13,7 +13,7 @@ const Search = ({ onSearchChange }) => {
   const loadOptions = async (inputValue) => {
     try {
       const response = await fetch(
-        `https://open-weather13.p.rapidapi.com/city/${inputValue}/EN`,
+        `https://open-weather13.p.rapidapi.com/city/${inputValue}`,
         geoApiOptions
       );
       const result = await response.json();
@@ -40,6 +40,10 @@ const Search = ({ onSearchChange }) => {
                 deg: city.wind.deg,
                 gust: city.wind.gust,
                 speed: city.wind.speed,
+              },
+              sys: {
+                sunrise: city.sys.sunrise,
+                sunset: city.sys.sunset,
               },
             },
           ],
